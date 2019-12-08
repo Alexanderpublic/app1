@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все статьи</title>
+</head>
+<body>
+    <div class="toplinks">
+        <section >
+            <ul class="align-right">
+                {% if username %}
+                    <li><a href="/auth/logout">Выйти ({{ username }})</a> </li>
+                {% else %}
+                    <li><a href="/auth/login">Войти</a></li>
+                {% endif %}
+            </ul>
+        </section>
+    </div>
+    {% for article in articles %}
+        <h2>{{ article.article_title }}</h2>
+        <p>{{ article.article_text }}</p>
+        <h4>Дата публикации: {{ article.pub_date }}</h4>
+        <h5><a href="/news/get/{{ article.id }}">Посмотреть полностью...</a></h5>
+        <hr>
+    {% endfor %}
+</body>
+</html>

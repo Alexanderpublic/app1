@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <div class="login">
+            <form action="/auth/login/" method="post">
+                {% csrf_token %}
+                <ul>
+                    <li>
+                        <label for="username">Имя пользователя</label>
+                        <input type="text" name="username" id="id_username">
+                    </li>
+                    <li>
+                        <label for="text">Пароль</label>
+                        <input type="password" name="password" id="id_password">
+                        {% if login_error %}
+                            <label class="errors">{{ login_error }}</label>
+                        {% endif %}
+                    </li>
+                    <li>
+                        <input class="button" type="submit" value="Войти">
+                        <div><a href="/auth/register">Регистрация</a></div>
+                    </li>
+                </ul>
+            </form>
+    </div>
+</body>
+</html>

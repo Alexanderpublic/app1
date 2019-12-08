@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Article</title>
+</head>
+<body>
+    <h2>{{ article.article_title }}</h2>
+    <p>{{ article.article_text }}</p>
+    <h4>Дата публикации: {{ article.pub_date }}</h4>
+    <hr>
+    <p>Комментарии: </p>
+    {% for comment in comments %}
+        <h3>{{ comment.creator }}</h3>
+        <p>{{ comment.comment_text }}</p>
+        <h4>Дата публикации: {{ comment.pub_date }}</h4>
+        <br>
+    {% endfor %}
+    {% if username %}
+        <form action="/news/addcomment/{{ article.id }}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="button" value="Добавть комментарий">
+        </form>
+    {% endif %}
+</body>
+</html>
